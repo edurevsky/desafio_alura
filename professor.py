@@ -10,12 +10,6 @@ class Professor(object):
     turma = []
     turno: Turno = None
 
-    def mudarStatusAlunoParaAtivo(self, aluno):
-        aluno._paraAtivo()
-
-    def mudarStatusAlunoParaInativo(self, aluno):
-        aluno._paraInativo()
-
     def __str__(self):
         return f'{self.nome},{self.email},{self.turma},{self.turno}'
 

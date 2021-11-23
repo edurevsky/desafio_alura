@@ -76,4 +76,5 @@ def registrarProfessor():
     professor = builder.comNome(nome).comEmail(email).build()
     print(professor)
 
+
 registrarAluno()

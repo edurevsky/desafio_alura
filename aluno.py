@@ -67,8 +67,3 @@ class AlunoBuilder(object):
 
     def build(self):
         return self.__aluno
-
-
-x = AlunoBuilder()
-
-print(x)
