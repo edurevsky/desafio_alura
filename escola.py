@@ -32,8 +32,8 @@ class Escola(object):
         AlunoDAO().salvar(aluno)
 
 
-    def removeAluno(self, cgmDoAuluno):
-        AlunoDAO().remover(cgmDoAuluno)
+    def removeAluno(self, cgmDoAluno):
+        AlunoDAO().remover(cgmDoAluno)
 
 
     def listarProfessores(self):
