@@ -1,63 +1,81 @@
-from aluno import AlunoBuilder
-from professor import ProfessorBuilder
+from aluno import Aluno
+from professor import Professor
+from status import Ativo
+from turnos import Manha, Tarde
+from alunoDAO import AlunoDAO
 
 
 class Escola(object):
 
     def __init__(self):
-        self.__alunos = []
         self.__professores = []
+        self.__alunos = AlunoDAO().carregar()
 
-    def addAluno(self, aluno):
-        self.__alunos.append(aluno)
+    @property
+    def alunos(self):
+        return self.__alunos
 
-    def removeAluno(self, index):
-        del self.__alunos[index]
+    @property
+    def professores(self):
+        return self.__professores
 
-    def addProfessor(self, professor):
-        self.__professores.append(professor)
 
-    def removeProfessor(self, index):
-        del self.__professores[index]
+    def adicionaProfessor(self, professor):
+        self.professores.append(professor)
 
-    def listarTodosAlunos(self):
-        for i in self.__alunos:
-            print(i)
 
-    def listarTodosProfessores(self):
-        for i in self.__professores:
-            print(i)
+    def removeProfessor(self, indexDoProfessor):
+        del self.professores[indexDoProfessor]
 
-    def mudarStatusAlunoParaAtivo(self, indexAluno):
-        self.__alunos[indexAluno]._paraAtivo()
 
-    def mudarStatusAlunoParaInativo(self, indexAluno):
-        self.__alunos[indexAluno]._paraInativo()
+    def adicionaAluno(self, aluno):
+        AlunoDAO().salvar(aluno)
 
-    def listarAlunosComTurma(self, codTurma):
-        for i in self.__alunos:
-            if i.turma == codTurma:
-                print(i)
 
-    def listarAlunosDeUmProfessor(self, indexProfessor):
-        """Recebe o index do professor que está na lista professores e printa seus alunos com base em seus códigos de turma."""
-        for codigo in self.__professores[indexProfessor].turma:
-                print('Alunos da turma ' + codigo)
-            # for aluno in self.__alunos:
-                self.listarAlunosComTurma(codigo)
+    def removeAluno(self, cgmDoAuluno):
+        AlunoDAO().remover(cgmDoAuluno)
+
+
+    def listarProfessores(self):
+        i = 0
+        for professor in self.professores:
+            print(f'ID: {i} - {professor}')
+            i += 1
+
+
+    def listarAlunos(self):
+        i = 0
+        for aluno in self.alunos:
+            print(f'ID: {i} - {aluno}')
+            i += 1
+
+
+    def listarAlunosPorTurma(self, codigo):
+        for aluno in self.alunos:
+            if aluno.turma == codigo:
+                print(aluno)
+
+    
+    def listarAlunosDoProfessor(self, indexDoProfessor):
+        for codigo in self.professores[indexDoProfessor].turmas:
+            self.listarAlunosPorTurma(codigo)
 
 
 esc = Escola()
 
-p1 = ProfessorBuilder().comNome('Silvio').comEmail('silvio@escola.pr.gov.br').comTurma('0001').comTurma('0002').comTurnoVespertino().build()
-a1 = AlunoBuilder().comNome('Eduardo').comEmail('eduardo@escola.pr.gov.br').comTurma('0001').comCgm('11111111').comTurnoVespertino().comStatusAtivo().build()
-a2 = AlunoBuilder().comNome('João').comEmail('joao@escola.pr.gov.br').comTurma('0002').comCgm('22222222').comTurnoVespertino().comStatusAtivo().build()
 
-esc.addProfessor(p1)
-esc.addAluno(a1)
-esc.addAluno(a2)
+p1 = Professor('Fulano', 'fulano@escola.pr.gov.br', ['0001'], Manha())
+p2 = Professor('John Doe', 'john.doe@escola.pr.gov.br', ['0002'], Tarde())
 
-esc.listarAlunosDeUmProfessor(0)
+a1 = Aluno('Ciclano', 'ciclano@escola.pr.gov.br', '0001', '11111111', Manha(), Ativo())
+a2 = Aluno('Beltrano', 'beltrano@escola.pr.gov.br', '0001', '22222222', Manha(), Ativo())
+a3 = Aluno('Sem Nome', 'sem.nome@escola.pr.gov.br', '0002', '33333333', Tarde(), Ativo())
 
-# esc.listarAlunosComTurma('0001')
-# esc.listarTodosAlunos()
+# esc.adicionaAluno(a1)
+# esc.adicionaAluno(a2)
+# esc.adicionaAluno(a3)
+# esc.adicionaProfessor(p1)
+# esc.adicionaProfessor(p2)
+esc.listarAlunos()
+# print(esc.alunos)
+# esc.listarAlunosPorTurma('0001')

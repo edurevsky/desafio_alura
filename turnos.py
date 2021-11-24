@@ -7,19 +7,19 @@ class Turno(metaclass=ABCMeta):
         pass
 
 
-class Matutino(Turno):
+class Manha(Turno):
 
     def __str__(self):
-        return 'Matutino'
+        return 'Manha'
 
 
-class Vespertino(Turno):
-
-    def __str__(self):
-        return 'Vespertino'
-
-    
-class Noturno(Turno):
+class Tarde(Turno):
 
     def __str__(self):
-        return 'Noturno'
+        return 'Tarde'
+
+
+class Noite(Turno):
+
+    def __str__(self):
+        return 'Noite'

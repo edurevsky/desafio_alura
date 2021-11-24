@@ -13,7 +13,7 @@ class Cgm(Validador):
         self.__cgm = cgm
 
     def valida(self):
-        if len(str(self.__cgm)) == 8:
+        if str(self.__cgm) == 8:
             if int(self.__cgm):
                 return True
         return False
@@ -25,8 +25,10 @@ class Email(Validador):
         self.__email = email
 
     def valida(self):
+        email = self.__email
         dominio = '@escola.pr.gov.br'
-        if dominio in self.__email:
-            if ' ' not in self.__email:
-                return True
+        if email == email.lower():
+            if dominio in email:
+                if ' ' not in email:
+                    return True
         return False
