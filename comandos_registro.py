@@ -23,7 +23,7 @@ def registrarAluno():
 
     turno = int(input(turnos + 'Digite o número correspondente ao turno: '))
     while not turno == 1 or turno == 2 or turno == 3:
-        turno = int(input(turno + 'Digite um turno válido: '))
+        turno = int(input(turnos + 'Digite um turno válido: '))
     if turno == 1:
         aluno = Aluno(nome, email, turma, cgm, Manha(), Ativo())
     elif turno == 2:
