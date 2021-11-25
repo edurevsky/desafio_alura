@@ -1,6 +1,11 @@
 from abc import ABCMeta, abstractmethod
 
 
+"""
+Os validadores serão usados apenas quando for implementado o sistema de interface
+no terminal
+"""
+
 class Validador(metaclass=ABCMeta):
     @abstractmethod
     def valida(self):

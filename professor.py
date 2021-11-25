@@ -9,8 +9,8 @@ class Professor(object):
     turmas: list[str]
     turno: Turno
 
-    def __csv__(self):
-        return f'{self.nome},{self.email},{self.turmas},{self.turno}\n'
+    def __dados__(self):
+        return f'O(a) Professor(a) {self.nome} {self.turno.desc}'
 
     def __str__(self):
         return f'Nome: {self.nome}, Email: {self.email}, Turmas: {self.turmas}, Turno: {self.turno}'

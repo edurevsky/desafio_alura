@@ -2,14 +2,13 @@ from aluno import Aluno
 from professor import Professor
 from status import Ativo
 from turnos import Manha, Tarde
-from alunoDAO import AlunoDAO
 
 
 class Escola(object):
 
     def __init__(self):
         self.__professores = []
-        self.__alunos = AlunoDAO().carregar()
+        self.__alunos = []
 
     @property
     def alunos(self):
@@ -24,16 +23,16 @@ class Escola(object):
         self.professores.append(professor)
 
 
-    def removeProfessor(self, indexDoProfessor):
-        del self.professores[indexDoProfessor]
+    def removeProfessor(self, index):
+        del self.professores[index]
 
 
     def adicionaAluno(self, aluno):
-        AlunoDAO().salvar(aluno)
+        self.alunos.append(aluno)
 
 
-    def removeAluno(self, cgmDoAluno):
-        AlunoDAO().remover(cgmDoAluno)
+    def removeAluno(self, index):
+        del self.alunos[index]
 
 
     def listarProfessores(self):
@@ -49,6 +48,22 @@ class Escola(object):
             print(f'ID: {i} - {aluno}')
             i += 1
 
+        
+    def listarAlunoComIndex(self, index):
+        print(self.alunos[index])
+
+    
+    def listarProfessorComIndex(self, index):
+        print(self.professores[index])
+
+
+    def listarDadosAlunoComIndex(self, index):
+        print(self.alunos[index].__dados__())
+
+
+    def listarDadosProfessorComIndex(self, index):
+        print(self.professores[index].__dados__())
+
 
     def listarAlunosPorTurma(self, codigo):
         for aluno in self.alunos:
@@ -56,26 +71,27 @@ class Escola(object):
                 print(aluno)
 
     
-    def listarAlunosDoProfessor(self, indexDoProfessor):
-        for codigo in self.professores[indexDoProfessor].turmas:
+    def listarAlunosDoProfessor(self, index):
+        for codigo in self.professores[index].turmas:
             self.listarAlunosPorTurma(codigo)
 
 
 esc = Escola()
 
+esc.listarProfessores()
 
-p1 = Professor('Fulano', 'fulano@escola.pr.gov.br', ['0001'], Manha())
-p2 = Professor('John Doe', 'john.doe@escola.pr.gov.br', ['0002'], Tarde())
+# p1 = Professor('Fulano', 'fulano@escola.pr.gov.br', ['0001'], Manha())
+# p2 = Professor('John Doe', 'john.doe@escola.pr.gov.br', ['0002'], Tarde())
 
 a1 = Aluno('Ciclano', 'ciclano@escola.pr.gov.br', '0001', '11111111', Manha(), Ativo())
-a2 = Aluno('Beltrano', 'beltrano@escola.pr.gov.br', '0001', '22222222', Manha(), Ativo())
-a3 = Aluno('Sem Nome', 'sem.nome@escola.pr.gov.br', '0002', '33333333', Tarde(), Ativo())
+# a2 = Aluno('Beltrano', 'beltrano@escola.pr.gov.br', '0001', '22222222', Manha(), Ativo())
+# a3 = Aluno('Sem Nome', 'sem.nome@escola.pr.gov.br', '0002', '33333333', Tarde(), Ativo())
 
-# esc.adicionaAluno(a1)
+esc.adicionaAluno(a1)
 # esc.adicionaAluno(a2)
 # esc.adicionaAluno(a3)
 # esc.adicionaProfessor(p1)
 # esc.adicionaProfessor(p2)
-esc.listarAlunos()
+esc.listarAlunoComIndex(0)
 # print(esc.alunos)
 # esc.listarAlunosPorTurma('0001')

@@ -1,7 +1,11 @@
-from abc import ABCMeta, abstractmethod
+from abc import ABCMeta, abstractmethod, abstractproperty
 
 
 class Status(metaclass=ABCMeta):
+    @abstractproperty
+    def desc(self):
+        pass
+
     @abstractmethod
     def __str__(self):
         pass
@@ -10,11 +14,11 @@ class Status(metaclass=ABCMeta):
 class Ativo(Status):
 
     def __init__(self):
-        self.__descricao = 'O aluno está ativo em seus estudos'
+        self.__desc = 'Está ativo(a) em seus estudos'
 
     @property
     def desc(self):
-        return self.__descricao
+        return self.__desc
 
     def __str__(self):
         return 'Ativo'
@@ -23,11 +27,11 @@ class Ativo(Status):
 class Inativo(Status):
 
     def __init__(self):
-        self.__descricao = 'O aluno não está ativo em seus estudos'
+        self.__desc = 'Está inativo(a) em seus estudos'
 
     @property
     def desc(self):
-        return self.__descricao
+        return self.__desc
 
     def __str__(self):
         return 'Inativo'

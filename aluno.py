@@ -12,8 +12,8 @@ class Aluno(object):
     turno: Turno
     status: Status
 
-    def __csv__(self):
-        return f'{self.nome},{self.email},{self.turma},{self.cgm},{self.turno},{self.status}\n'
+    def __dados__(self):
+        return f'O(a) aluno(a) {self.nome} {self.status.desc} e {self.turno.desc}'
 
     def __str__(self):
         return f'Nome: {self.nome}, Email: {self.email}, Turma: {self.turma}, CGM: {self.cgm}, Turno: {self.turno}, Status: {self.status}'
