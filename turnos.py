@@ -14,9 +14,8 @@ class Turno(metaclass=ABCMeta):
 class Manha(Turno):
 
     def __init__(self):
-        self.__desc = 'Está registrado no turno da manhã'
+        self.__desc = 'está registrado no turno da manhã'
 
-    @property
     def desc(self):
         return self.__desc
 
@@ -27,7 +26,7 @@ class Manha(Turno):
 class Tarde(Turno):
 
     def __init__(self):
-        self.__desc = 'Está registrado no turno da tarde'
+        self.__desc = 'está registrado no turno da tarde'
 
     @property
     def desc(self):
@@ -40,7 +39,7 @@ class Tarde(Turno):
 class Noite(Turno):
 
     def __init__(self):
-        self.__desc - 'Está registrado no turno da noite'
+        self.__desc = 'está registrado no turno da noite'
 
     @property
     def desc(self):

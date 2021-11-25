@@ -1,6 +1,6 @@
 from aluno import Aluno
 from professor import Professor
-from status import Ativo
+from status import Ativo, Inativo
 from turnos import Manha, Tarde
 
 
@@ -49,12 +49,12 @@ class Escola(object):
             i += 1
 
         
-    def listarAlunoComIndex(self, index):
-        print(self.alunos[index])
-
-    
     def listarProfessorComIndex(self, index):
         print(self.professores[index])
+
+
+    def listarAlunoComIndex(self, index):
+        print(self.alunos[index])
 
 
     def listarDadosAlunoComIndex(self, index):
@@ -76,11 +76,19 @@ class Escola(object):
             self.listarAlunosPorTurma(codigo)
 
 
+    def mudarStatusAlunoParaAtivo(self, index):
+        self.alunos[index].status = Ativo()
+
+    
+    def mudarStatusAlunoParaInativo(self, index):
+        self.alunos[index].status = Inativo()
+
+
 esc = Escola()
 
 esc.listarProfessores()
 
-# p1 = Professor('Fulano', 'fulano@escola.pr.gov.br', ['0001'], Manha())
+p1 = Professor('Fulano', 'fulano@escola.pr.gov.br', ['0001'], Manha())
 # p2 = Professor('John Doe', 'john.doe@escola.pr.gov.br', ['0002'], Tarde())
 
 a1 = Aluno('Ciclano', 'ciclano@escola.pr.gov.br', '0001', '11111111', Manha(), Ativo())
@@ -88,10 +96,12 @@ a1 = Aluno('Ciclano', 'ciclano@escola.pr.gov.br', '0001', '11111111', Manha(), A
 # a3 = Aluno('Sem Nome', 'sem.nome@escola.pr.gov.br', '0002', '33333333', Tarde(), Ativo())
 
 esc.adicionaAluno(a1)
+esc.adicionaProfessor(p1)
 # esc.adicionaAluno(a2)
 # esc.adicionaAluno(a3)
 # esc.adicionaProfessor(p1)
 # esc.adicionaProfessor(p2)
-esc.listarAlunoComIndex(0)
+esc.mudarStatusAlunoParaInativo(0)
+esc.listarDadosAlunoComIndex(0)
 # print(esc.alunos)
 # esc.listarAlunosPorTurma('0001')

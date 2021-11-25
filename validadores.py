@@ -18,7 +18,7 @@ class Cgm(Validador):
         self.__cgm = cgm
 
     def valida(self):
-        if str(self.__cgm) == 8:
+        if len(str(self.__cgm)) == 8:
             if int(self.__cgm):
                 return True
         return False

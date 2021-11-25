@@ -14,7 +14,7 @@ class Status(metaclass=ABCMeta):
 class Ativo(Status):
 
     def __init__(self):
-        self.__desc = 'Está ativo(a) em seus estudos'
+        self.__desc = 'está ativo(a) em seus estudos'
 
     @property
     def desc(self):
@@ -27,7 +27,7 @@ class Ativo(Status):
 class Inativo(Status):
 
     def __init__(self):
-        self.__desc = 'Está inativo(a) em seus estudos'
+        self.__desc = 'está inativo(a) em seus estudos'
 
     @property
     def desc(self):
