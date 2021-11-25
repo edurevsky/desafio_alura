@@ -16,6 +16,7 @@ class Manha(Turno):
     def __init__(self):
         self.__desc = 'está registrado no turno da manhã'
 
+    @property
     def desc(self):
         return self.__desc
 
