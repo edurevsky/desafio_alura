@@ -72,10 +72,7 @@ class Escola(object):
 
 
     def listarAlunoComIndex(self, index):
-        try:
             print(self.alunos[index])
-        except IndexError:
-            print(self.erroIndex(index))
 
 
     def listarDadosAlunoComIndex(self, index):
@@ -160,26 +157,3 @@ class Escola(object):
     def mudar(self):
         pass
 
-
-# esc = Escola()
-
-# esc.listarProfessores()
-
-# p1 = Professor('Fulano', 'fulano@escola.pr.gov.br', ['0001'], Manha())
-# # p2 = Professor('John Doe', 'john.doe@escola.pr.gov.br', ['0002'], Tarde())
-
-# a1 = Aluno('Ciclano', 'ciclano@escola.pr.gov.br', '0001', '11111111', Manha(), Ativo())
-# # a2 = Aluno('Beltrano', 'beltrano@escola.pr.gov.br', '0001', '22222222', Manha(), Ativo())
-# # a3 = Aluno('Sem Nome', 'sem.nome@escola.pr.gov.br', '0002', '33333333', Tarde(), Ativo())
-
-# esc.adicionaAluno(a1)
-# esc.adicionaProfessor(p1)
-# # esc.adicionaAluno(a2)
-# # esc.adicionaAluno(a3)
-# # esc.adicionaProfessor(p1)
-# # esc.adicionaProfessor(p2)
-# # esc.mudarNomeDoAluno(0, 'jubileu')
-# esc.listarDadosAlunoComIndex(23)
-# # esc.listarDadosAlunoComIndex(0)
-# # print(esc.alunos)
-# # esc.listarAlunosPorTurma('0001')

@@ -9,6 +9,7 @@ turnos = '[1] Manha - [2] Tarde - [3] Noite\n'
 
 
 def registrarAluno():
+    """Pede os atributos com inputs e retorna um objeto tipo `Aluno`"""
     nome = input('Digite o nome do aluno: ')
 
     email = input('Digite o email do aluno: ')
@@ -22,14 +23,14 @@ def registrarAluno():
         cgm = input('Digite um CGM válido (8 números): ')
 
     turno = int(input(turnos + 'Digite o número correspondente ao turno: '))
-    while not turno == 1 or turno == 2 or turno == 3:
-        turno = int(input(turnos + 'Digite um turno válido: '))
     if turno == 1:
         aluno = Aluno(nome, email, turma, cgm, Manha(), Ativo())
     elif turno == 2:
         aluno = Aluno(nome, email, turma, cgm, Tarde(), Ativo())
     elif turno == 3:
         aluno = Aluno(nome, email, turma, cgm, Noite(), Ativo())
+    else:
+        raise ValueError('Não foi inserido um turno válido.\nRegistro cancelado.')
     
     stringAluno = (f"Aluno '{aluno.nome} - {aluno.cgm}' foi registrado no sistema.")
     input(f'Por padrão, o aluno terá status como Ativo.\n{stringAluno}\nAperte Enter para continuar...')
@@ -38,6 +39,7 @@ def registrarAluno():
 
 
 def registrarProfessor():
+    """Pede os atributos com inputs e retorna um objeto tipo `Professor`"""
     nome = input('Digite o nome do professor: ')
 
     email = input('Digite o email do professor: ')
@@ -55,14 +57,14 @@ def registrarProfessor():
         i += 1
     
     turno = int(input(turnos + 'Digite o número correspondente ao turno: '))
-    while not turno == 1 or turno == 2 or turno == 3:
-       turno = int(input(turnos + 'Digite um turno válido: '))
     if turno == 1:
         professor = Professor(nome, email, listaTurmas, Manha())
     elif turno == 2:
         professor = Professor(nome, email, listaTurmas, Tarde())
     elif turno == 3:
         professor = Professor(nome, email, listaTurmas, Noite())
+    else:
+        raise ValueError('Não foi inserido um turno válido.\nRegistro cancelado.')
 
     input(f"Professor '{professor.nome} - {professor.email}' foi registrado no sistema.\nAperte Enter para continuar...")
     return professor

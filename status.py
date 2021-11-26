@@ -2,6 +2,7 @@ from abc import ABCMeta, abstractmethod, abstractproperty
 
 
 class Status(metaclass=ABCMeta):
+    """Classe 'mãe' que serve de base para os Status: `Ativo` e `Inativo`"""
     @abstractproperty
     def desc(self):
         pass
@@ -12,7 +13,10 @@ class Status(metaclass=ABCMeta):
 
 
 class Ativo(Status):
-
+    """Classe que herda de `Status`
+    
+    Possui uma property que retorna o conteúdo privado desc
+    """
     def __init__(self):
         self.__desc = 'está ativo(a) em seus estudos'
 
@@ -25,7 +29,10 @@ class Ativo(Status):
 
 
 class Inativo(Status):
-
+    """Classe que herda de `Status`
+    
+    Possui uma property que retorna o conteúdo privado desc
+    """
     def __init__(self):
         self.__desc = 'está inativo(a) em seus estudos'
 

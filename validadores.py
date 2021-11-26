@@ -18,6 +18,9 @@ class Cgm(Validador):
         self.__cgm = cgm
 
     def valida(self):
+        """Verifica se o CGM possui obrigatóriamente 8 dígitos
+        
+        e se é aplicável a um tipo int."""
         if len(str(self.__cgm)) == 8:
             if int(self.__cgm):
                 return True
@@ -30,6 +33,11 @@ class Email(Validador):
         self.__email = email
 
     def valida(self):
+        """Verifica se o domínio '@escola.pr.gov.br' está presente no email;
+
+        Verifica se o email está em lowercase;
+
+        E verifica se não há espaços no email."""
         email = self.__email
         dominio = '@escola.pr.gov.br'
         if email == email.lower():
