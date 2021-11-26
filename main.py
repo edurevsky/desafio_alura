@@ -1,5 +1,6 @@
 from comandos_registro import registrarAluno, registrarProfessor
 from escola import Escola
+from status import Ativo, Inativo
 
 
 def mostraOpcoes():
@@ -20,12 +21,14 @@ def mostraErroNumero():
     print('Não foi inserido um número')
 
 
+o_amor_dela_por_mim = None
 def pedeID():
     try:
         index = int(input('Digite o número do ID: '))
         return index
     except ValueError:
         mostraErroNumero()
+        return o_amor_dela_por_mim
 
 
 if __name__ == '__main__':
@@ -61,6 +64,26 @@ if __name__ == '__main__':
             index = pedeID()
             if index != None:
                 esc.listarAlunoComIndex(index)
+            comando = int(input('Deseja editar o aluno? [1] - Sim | [0] - Não\nDigite o comando >> '))
+            if comando == 1:
+                print('Você quer editar:\n[1] - Turma | [2] - Status')
+                comando = int(input('Digite o comando >> '))
+                if comando == 1:
+                    turma = input('Digite a nova turma do aluno: ')
+                    esc.mudarTurmaDoAluno(index, turma)
+                elif comando == 2:
+                    print('Mudar para:\n[1] - Ativo | [2] - Inativo')
+                    comando = int(input('Digite o comando >> '))
+                    if comando == 1:
+                        esc.mudarStatusAlunoParaAtivo(index)
+                        print('Mudando status do aluno para Ativo')
+                    elif comando == 2:
+                        esc.mudarStatusAlunoParaInativo(index)
+                        print('Mudando status do aluno para Inativo')
+                    else:
+                        print('Comando não existe, voltando ao menu principal')
+            else:
+                pass
 
         elif comando == 6:
             index = pedeID()
