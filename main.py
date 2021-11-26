@@ -18,6 +18,13 @@ def mostraErroNumero():
     print('Não foi inserido um número')
 
 
+def tenteFazer(algo):
+    try:
+        algo
+    except ValueError:
+        mostraErroNumero()
+
+
 if __name__ == '__main__':
 
     while True:
@@ -41,29 +48,17 @@ if __name__ == '__main__':
             esc.listarProfessores()
 
         elif comando == 5:
-            try:
-                index = int(input('Digite o número do ID: '))
-                esc.listarAlunoComIndex(index)
-            except ValueError as e:
-                mostraErroNumero()
+            index = int(input('Digite o número do ID: '))
+            tenteFazer(esc.listarAlunoComIndex(index))
 
         elif comando == 6:
-            try:
-                index = int(input('Digite o número do ID: '))
-                esc.listarProfessorComIndex(index)
-            except ValueError:
-                mostraErroNumero()
+            index = int(input('Digite o número do ID: '))
+            tenteFazer(esc.listarProfessorComIndex(index))
 
         elif comando == 7:
-            try:
-                codigo = input('Digite o código da turma: ')
-                esc.listarAlunosPorTurma(codigo)
-            except ValueError:
-                mostraErroNumero()
+            codigo = input('Digite o código da turma: ')
+            tenteFazer(esc.listarAlunosPorTurma(codigo))
 
         elif comando == 8:
-            try:
-                index = int(input('Digite o número do ID: '))
-                esc.listarAlunosDoProfessor()
-            except ValueError:
-                mostraErroNumero()
+            index = int(input('Digite o número do ID: '))
+            tenteFazer(esc.listarAlunosDoProfessor(index))
