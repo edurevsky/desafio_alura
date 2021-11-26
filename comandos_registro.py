@@ -66,6 +66,3 @@ def registrarProfessor():
 
     input(f"Professor '{professor.nome} - {professor.email}' foi registrado no sistema.\nAperte Enter para continuar...")
     return professor
-
-
-registrarAluno()

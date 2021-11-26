@@ -19,43 +19,78 @@ class Escola(object):
         return self.__professores
 
     def erroIndex(self, index):
-        return f'Não há entidade com ID(index): {index} na lista.'
+        return f"Não há entidade com ID(index): '{index}' na lista."
+
 
     def adicionaProfessor(self, professor):
         self.professores.append(professor)
 
+
     def removeProfessor(self, index):
-        del self.professores[index]
+        try:
+            del self.professores[index]
+        except IndexError:
+            print(self.erroIndex(index))
+
 
     def adicionaAluno(self, aluno):
         self.alunos.append(aluno)
 
+
     def removeAluno(self, index):
-        del self.alunos[index]
+        try:
+            del self.alunos[index]
+        except IndexError:
+            print(self.erroIndex(index))
+
 
     def listarProfessores(self):
-        i = 0
-        for professor in self.professores:
-            print(f'ID: {i} - {professor}')
-            i += 1
+        if len(self.professores) > 0:
+            i = 0
+            for professor in self.professores:
+                print(f'ID(index): {i} - {professor}')
+                i += 1
+        else:
+            print('Ainda não há professores registrados no sistema.')
+
 
     def listarAlunos(self):
-        i = 0
-        for aluno in self.alunos:
-            print(f'ID: {i} - {aluno}')
-            i += 1
+        if len(self.alunos) > 0:
+            i = 0
+            for aluno in self.alunos:
+                print(f'ID(index): {i} - {aluno}')
+                i += 1
+        else:
+            print('Ainda não há alunos registrados no sistema.')
         
+
     def listarProfessorComIndex(self, index):
-        print(self.professores[index])
+        try:
+            print(self.professores[index])
+        except IndexError:
+            print(self.erroIndex(index))
+
 
     def listarAlunoComIndex(self, index):
-        print(self.alunos[index])
+        try:
+            print(self.alunos[index])
+        except IndexError:
+            print(self.erroIndex(index))
+
 
     def listarDadosAlunoComIndex(self, index):
-        print(self.alunos[index].__dados__())
+        try:
+            print(self.alunos[index].__dados__())
+        except IndexError:
+            print(self.erroIndex(index))
+
 
     def listarDadosProfessorComIndex(self, index):
-        print(self.professores[index].__dados__())
+        try:
+            print(self.professores[index].__dados__())
+        except IndexError:
+            print(self.erroIndex(index))
+
 
     def listarAlunosPorTurma(self, codigo):
         for aluno in self.alunos:
@@ -64,6 +99,7 @@ class Escola(object):
             else:
                 print(f'Não há aluno na turma {codigo}')
     
+
     def listarAlunosDoProfessor(self, index):
         try:
             for codigo in self.professores[index].turmas:
@@ -71,23 +107,20 @@ class Escola(object):
         except IndexError:
             print(self.erroIndex(index))
 
+
     def mudarStatusAlunoParaAtivo(self, index):
         try:
             self.alunos[index].status = Ativo()
         except IndexError:
             print(self.erroIndex(index))
     
+
     def mudarStatusAlunoParaInativo(self, index):
         try:
             self.alunos[index].status = Inativo()
         except IndexError:
             print(self.erroIndex(index))
 
-    def mudarNomeDoAluno(self, index, nome):
-        try:
-            self.alunos[index].nome = nome
-        except IndexError:
-            print(self.erroIndex(index))
 
     def mudarTurmaDoAluno(self, index, turma):
         try:
@@ -95,11 +128,13 @@ class Escola(object):
         except IndexError:
             print(self.erroIndex(index))
 
+
     def mudarTurnoDoAlunoParaManha(self, index):
         try:
             self.alunos[index].turno = Manha()
         except IndexError:
             print(self.erroIndex(index))
+
 
     def mudarTurnoDoAlunoParaTarde(self, index):
         try:
@@ -107,6 +142,7 @@ class Escola(object):
         except IndexError:
             print(self.erroIndex(index))
             
+
     def mudarTurnoDoAlunoParaNoite(self, index):
         try:
             self.alunos[index].turno = Noite()
@@ -114,26 +150,36 @@ class Escola(object):
             print(self.erroIndex(index))
 
 
+    def mudarNomeDoAluno(self, index, nome):
+        try:
+            self.alunos[index].nome = nome
+        except IndexError:
+            print(self.erroIndex(index))
 
-esc = Escola()
 
-esc.listarProfessores()
+    def mudar(self):
+        pass
 
-p1 = Professor('Fulano', 'fulano@escola.pr.gov.br', ['0001'], Manha())
-# p2 = Professor('John Doe', 'john.doe@escola.pr.gov.br', ['0002'], Tarde())
 
-a1 = Aluno('Ciclano', 'ciclano@escola.pr.gov.br', '0001', '11111111', Manha(), Ativo())
-# a2 = Aluno('Beltrano', 'beltrano@escola.pr.gov.br', '0001', '22222222', Manha(), Ativo())
-# a3 = Aluno('Sem Nome', 'sem.nome@escola.pr.gov.br', '0002', '33333333', Tarde(), Ativo())
+# esc = Escola()
 
-esc.adicionaAluno(a1)
-esc.adicionaProfessor(p1)
-# esc.adicionaAluno(a2)
-# esc.adicionaAluno(a3)
+# esc.listarProfessores()
+
+# p1 = Professor('Fulano', 'fulano@escola.pr.gov.br', ['0001'], Manha())
+# # p2 = Professor('John Doe', 'john.doe@escola.pr.gov.br', ['0002'], Tarde())
+
+# a1 = Aluno('Ciclano', 'ciclano@escola.pr.gov.br', '0001', '11111111', Manha(), Ativo())
+# # a2 = Aluno('Beltrano', 'beltrano@escola.pr.gov.br', '0001', '22222222', Manha(), Ativo())
+# # a3 = Aluno('Sem Nome', 'sem.nome@escola.pr.gov.br', '0002', '33333333', Tarde(), Ativo())
+
+# esc.adicionaAluno(a1)
 # esc.adicionaProfessor(p1)
-# esc.adicionaProfessor(p2)
-# esc.mudarNomeDoAluno(0, 'jubileu')
-esc.listarAlunosDoProfessor(0)
-# esc.listarDadosAlunoComIndex(0)
-# print(esc.alunos)
-# esc.listarAlunosPorTurma('0001')
+# # esc.adicionaAluno(a2)
+# # esc.adicionaAluno(a3)
+# # esc.adicionaProfessor(p1)
+# # esc.adicionaProfessor(p2)
+# # esc.mudarNomeDoAluno(0, 'jubileu')
+# esc.listarDadosAlunoComIndex(23)
+# # esc.listarDadosAlunoComIndex(0)
+# # print(esc.alunos)
+# # esc.listarAlunosPorTurma('0001')
