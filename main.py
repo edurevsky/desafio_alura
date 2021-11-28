@@ -63,10 +63,10 @@ if __name__ == '__main__':
         elif comando == 5:
             index = pedeID()
             if index != None:
-                aluno = esc.listarAlunoComIndex(index)
+                esc.listarAlunoComIndex(index)
             comando = int(input('Deseja editar o aluno? [1] - Sim | [0] - Não\nDigite o comando >> '))
             if comando == 1:
-                print('Você quer editar:\n[1] - Nome | [3] - Turma | [4] - Status')
+                print('Você quer editar:\n[1] - Nome | [2] - Email | [3] - Turma | [4] - Status')
                 comando = int(input('Digite o comando >> '))
                 # Muda nome do aluno
                 if comando == 1:

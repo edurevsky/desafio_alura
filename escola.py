@@ -1,5 +1,3 @@
-from aluno import Aluno
-from professor import Professor
 from status import Ativo, Inativo
 from turnos import Manha, Noite, Tarde
 
