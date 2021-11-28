@@ -1,6 +1,6 @@
-from comandos_registro import registrarAluno, registrarProfessor
+from comandos_registro import registrarAluno, registrarProfessor, pedeEmail
 from escola import Escola
-from status import Ativo, Inativo
+from validadores import Email
 
 
 def mostraOpcoes():
@@ -14,6 +14,7 @@ def mostraOpcoes():
     print('[6] - Consultar Professor com ID')
     print('[7] - Listar Alunos por Turma')
     print('[8] - Listar Alunos de um Professor')
+    print('[9] - Ver Dados Simples de um Aluno')
 
 
 def mostraErroNumero():
@@ -21,14 +22,13 @@ def mostraErroNumero():
     print('Não foi inserido um número')
 
 
-o_amor_dela_por_mim = None
 def pedeID():
     try:
         index = int(input('Digite o número do ID: '))
         return index
     except ValueError:
         mostraErroNumero()
-        return o_amor_dela_por_mim
+        return None
 
 
 if __name__ == '__main__':
@@ -63,23 +63,33 @@ if __name__ == '__main__':
         elif comando == 5:
             index = pedeID()
             if index != None:
-                esc.listarAlunoComIndex(index)
+                aluno = esc.listarAlunoComIndex(index)
             comando = int(input('Deseja editar o aluno? [1] - Sim | [0] - Não\nDigite o comando >> '))
             if comando == 1:
-                print('Você quer editar:\n[1] - Turma | [2] - Status')
+                print('Você quer editar:\n[1] - Nome | [3] - Turma | [4] - Status')
                 comando = int(input('Digite o comando >> '))
+                # Muda nome do aluno
                 if comando == 1:
+                    nome = input('Digite o nome a ser mudado: ')
+                    esc.mudarNomeDoAluno(index, nome)
+                    print(f'Aluno com ID {index} teve nome alterado para {nome}!')
+                elif comando == 2:
+                    email = pedeEmail()
+                    esc.mudarEmailDoAluno(index, email)
+                # Muda turma do aluno
+                elif comando == 3:
                     turma = input('Digite a nova turma do aluno: ')
                     esc.mudarTurmaDoAluno(index, turma)
-                elif comando == 2:
+                # Muda turno do aluno
+                elif comando == 4:
                     print('Mudar para:\n[1] - Ativo | [2] - Inativo')
                     comando = int(input('Digite o comando >> '))
                     if comando == 1:
                         esc.mudarStatusAlunoParaAtivo(index)
-                        print('Mudando status do aluno para Ativo')
+                        print(f'Mudando status do aluno com ID {index} para Ativo')
                     elif comando == 2:
                         esc.mudarStatusAlunoParaInativo(index)
-                        print('Mudando status do aluno para Inativo')
+                        print(f'Mudando status do aluno com ID {index} para Inativo')
                     else:
                         print('Comando não existe, voltando ao menu principal')
             else:
@@ -98,3 +108,8 @@ if __name__ == '__main__':
             index = pedeID()
             if index != None:
                 esc.listarAlunosDoProfessor(index)
+
+        elif comando == 9:
+            index = pedeID()
+            if index != None:
+                esc.listarDadosAlunoComIndex(index)

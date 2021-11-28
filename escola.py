@@ -156,6 +156,9 @@ class Escola(object):
             print(self.erroIndex(index))
 
 
-    def mudar(self):
-        pass
+    def mudarEmailDoAluno(self, index, email):
+        try:
+            self.alunos[index].email = email
+        except IndexError:
+            print(self.erroIndex(index))
 

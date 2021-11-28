@@ -12,7 +12,7 @@ class Turno(metaclass=ABCMeta):
 
 
 class Manha(Turno):
-
+    """Classe que herda de Turno, possui property que retorna uma descrição"""
     def __init__(self):
         self.__desc = 'está registrado no turno da manhã'
 
@@ -25,7 +25,7 @@ class Manha(Turno):
 
 
 class Tarde(Turno):
-
+    """Classe que herda de Turno, possui property que retorna uma descrição"""
     def __init__(self):
         self.__desc = 'está registrado no turno da tarde'
 
@@ -38,7 +38,7 @@ class Tarde(Turno):
 
 
 class Noite(Turno):
-
+    """Classe que herda de Turno, possui property que retorna uma descrição"""
     def __init__(self):
         self.__desc = 'está registrado no turno da noite'
 

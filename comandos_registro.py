@@ -8,19 +8,34 @@ from status import Ativo, Inativo, Status
 turnos = '[1] Manha - [2] Tarde - [3] Noite\n'
 
 
-def registrarAluno():
-    """Pede os atributos com inputs e retorna um objeto tipo `Aluno`"""
-    nome = input('Digite o nome do aluno: ')
+def pedeNome():
+    nome = input(f'Digite o nome:')
+    return nome
 
-    email = input('Digite o email do aluno: ')
+
+def pedeEmail():
+    email = input('Digite o email: ')
     while not Email(email).valida():
         email = input('Digite um email válido (@escola.pr.gov.br): ')
+    return email
+
+
+def pedeCgm():
+    cgm = input('Digite o CGM: ')
+    while not Cgm(cgm).valida():
+        cgm = input('Digite um CGM válido (8 dígitos): ')
+    return cgm
+
+
+def registrarAluno():
+    """Pede os atributos com inputs e retorna um objeto tipo `Aluno`"""
+    nome = pedeNome()
+
+    email = pedeEmail()
 
     turma = input('Digite o código da turma: ')
 
-    cgm = input('Digite o CGM do aluno: ')
-    while not Cgm(cgm).valida():
-        cgm = input('Digite um CGM válido (8 números): ')
+    cgm = pedeCgm()
 
     turno = int(input(turnos + 'Digite o número correspondente ao turno: '))
     if turno == 1:
@@ -34,7 +49,6 @@ def registrarAluno():
     
     stringAluno = (f"Aluno '{aluno.nome} - {aluno.cgm}' foi registrado no sistema.")
     input(f'Por padrão, o aluno terá status como Ativo.\n{stringAluno}\nAperte Enter para continuar...')
-
     return aluno
 
 
@@ -65,6 +79,5 @@ def registrarProfessor():
         professor = Professor(nome, email, listaTurmas, Noite())
     else:
         raise ValueError('Não foi inserido um turno válido.\nRegistro cancelado.')
-
     input(f"Professor '{professor.nome} - {professor.email}' foi registrado no sistema.\nAperte Enter para continuar...")
     return professor
