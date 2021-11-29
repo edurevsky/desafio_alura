@@ -76,6 +76,7 @@ class Escola(object):
         except IndexError:
             print(self.erroIndex(index))
 
+
     def listarDadosAlunoComIndex(self, index):
         try:
             print(self.alunos[index].__dados__())

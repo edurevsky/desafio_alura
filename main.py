@@ -2,6 +2,10 @@ from comandos_registro import registrarAluno, registrarProfessor, pedeEmail
 from escola import Escola
 
 
+"""
+------------- Comandos da interface -------------
+"""
+
 def mostraOpcoes():
     """Interface do sistema"""
     print() # Quebra de linha 
@@ -9,7 +13,7 @@ def mostraOpcoes():
     print('[2] - Cadastrar Professor')
     print('[3] - Listar Alunos')
     print('[4] - Listar Professores')
-    print('[5] - Consultar Aluno com ID')
+    print('[5] - Consultar e Editar Aluno com ID')
     print('[6] - Consultar Professor com ID')
     print('[7] - Listar Alunos por Turma')
     print('[8] - Listar Alunos de um Professor')
@@ -61,6 +65,8 @@ def editarTurnoAluno(index):
     elif comando == 3:
         esc.mudarTurnoDoAlunoParaNoite(index)
         print(f'Turno do aluno (ID: {index}) mudado para Noite')
+    else:
+        print('Opção não existe.')
 
 
 def editarStatusAluno(index):
@@ -72,6 +78,8 @@ def editarStatusAluno(index):
     elif comando == 2:
         esc.mudarStatusAlunoParaInativo(index)
         print(f'Status do aluno (ID: {index}) mudado para Inativo')
+    else:
+        print('Opção não existe.')
 
 
 def mostraDadosAlunoComOpcoes(index):
@@ -101,6 +109,10 @@ def mostraDadosAlunoComOpcoes(index):
             else:
                 pass # Não fazer nada
 
+
+"""
+------------- Executável -------------
+"""
 
 if __name__ == '__main__':
 
@@ -157,3 +169,6 @@ if __name__ == '__main__':
 
         elif comando == 0:
             exit()
+
+        else:
+            print('\nComando digitado não existe.')
