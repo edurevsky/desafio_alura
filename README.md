@@ -1,9 +1,12 @@
 # Desafio Alura
 
 > Neste projeto, foi utilizado o Python em sua versão __3.9.7__
+##### O arquivo responsável pela "inicialização do sistema" é o "main.py"
 
 ## Abaixo, uma foto de como é a "interface" do sistema.
 ![](img/foto_terminal.png)
+
+### Comandos:
 
 + Cadastrar Aluno
   - O sistema entra em modo de cadastro para aluno, onde irá perguntar as informações necessárias para realizar o cadastro.
