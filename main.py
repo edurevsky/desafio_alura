@@ -75,30 +75,30 @@ def editarStatusAluno(index):
 
 def mostraDadosAlunoComOpcoes(index):
     if index != None:
-        esc.listarAlunoComIndex(index)
-    comando = int(input('Deseja editar o aluno? [1] - Sim | [0] - Não\nDigite o comando >> '))
-    if comando == 1:
-        print('Você quer editar:\n[1] - Nome | [2] - Email | [3] - Turma | [4] - Turno | [5] - Status')
-        comando = int(input('Digite o comando >> '))
-        # Muda nome do aluno
-        if comando == 1:
-            editarNomeAluno(index)
-        # Muda email do aluno
-        elif comando == 2:
-            editarEmailAluno(index)
-        # Muda turma do aluno
-        elif comando == 3:
-            editarTurmaAluno(index)
-        # Muda Turno do aluno
-        elif comando == 4:
-            editarTurnoAluno(index)
-        # Muda Status do aluno
-        elif comando == 5:
-            editarStatusAluno(index)
-        else:
-            print('Opção não existe, voltando ao menu principal')
-    else:
-        pass # Não fazer nada
+        if esc.listarAlunoComIndex(index):
+            comando = int(input('Deseja editar o aluno? [1] - Sim | [0] - Não\nDigite o comando >> '))
+            if comando == 1:
+                print('Você quer editar:\n[1] - Nome | [2] - Email | [3] - Turma | [4] - Turno | [5] - Status')
+                comando = int(input('Digite o comando >> '))
+                # Muda nome do aluno
+                if comando == 1:
+                    editarNomeAluno(index)
+                # Muda email do aluno
+                elif comando == 2:
+                    editarEmailAluno(index)
+                # Muda turma do aluno
+                elif comando == 3:
+                    editarTurmaAluno(index)
+                # Muda Turno do aluno
+                elif comando == 4:
+                    editarTurnoAluno(index)
+                # Muda Status do aluno
+                elif comando == 5:
+                    editarStatusAluno(index)
+                else:
+                    print('Opção não existe, voltando ao menu principal')
+            else:
+                pass # Não fazer nada
 
 
 if __name__ == '__main__':
@@ -132,7 +132,8 @@ if __name__ == '__main__':
 
         elif comando == 5:
             index = pedeID()
-            mostraDadosAlunoComOpcoes(index)
+            if index != None:
+                mostraDadosAlunoComOpcoes(index)
 
         elif comando == 6:
             index = pedeID()
