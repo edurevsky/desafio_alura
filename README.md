@@ -13,7 +13,7 @@
 + Cadastrar Professor
   - Assim como o Cadastrar Aluno, o sistema irá perguntar as informações necessárias para cadastrar o Professor.
 + Listar Alunos
-  - O programa irá retornar os Alunos salvos no sistema, sendo que, os alunos possuem um ID(index), que será necessário caso o usuário precise alterar algum dado do Aluno.
+  - O programa irá retornar o ID(index) dos Alunos salvos no sistema, sendo que, que será necessário a utilização do ID caso o usuário precise alterar algum dado do Aluno.
 + Listar Professores
   - Assim como o Listar Alunos, retorna o ID(index) e os professores salvos no sistema.
 + Consultar e Editar Aluno com ID
