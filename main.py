@@ -14,6 +14,7 @@ def mostraOpcoes():
     print('[7] - Listar Alunos por Turma')
     print('[8] - Listar Alunos de um Professor')
     print('[9] - Ver Dados de um Aluno com ID')
+    print('[0] - SAIR')
 
 
 def mostraErroNumero():
@@ -153,3 +154,6 @@ if __name__ == '__main__':
             index = pedeID()
             if index != None:
                 esc.listarDadosAlunoComIndex(index)
+
+        elif comando == 0:
+            exit()
