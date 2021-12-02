@@ -54,17 +54,15 @@ def registrarAluno():
 
 def registrarProfessor():
     """Pede os atributos com inputs e retorna um objeto tipo `Professor`"""
-    nome = input('Digite o nome do professor: ')
+    nome = pedeNome()
 
-    email = input('Digite o email do professor: ')
-    while not Email(email).valida():
-        email = input('Digite um email válido (@escola.pr.gov.br): ')
+    email = pedeEmail()
     
     qntTurmas = int(input('Digite quantas turmas o professor tem: '))
     while qntTurmas <= 0:
         qntTurmas = int(input('Digite uma quantidade válida: '))
     i = 0
-    while i < qntTurmas:
+    while i < qntTurmas and qntTurmas < 25:
         listaTurmas = []
         t = input('Digite o código da turma: ')
         listaTurmas.append(t)

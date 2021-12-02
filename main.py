@@ -14,10 +14,12 @@ def mostraOpcoes():
     print('[3] - Listar Alunos')
     print('[4] - Listar Professores')
     print('[5] - Consultar e Editar Aluno com ID')
-    print('[6] - Consultar Professor com ID')
+    print('[6] - Consultar e Professor com ID')
     print('[7] - Listar Alunos por Turma')
     print('[8] - Listar Alunos de um Professor')
     print('[9] - Ver Dados de um Aluno com ID')
+    print('[10] - Remover Aluno com ID')
+    print('[11] - Remover Professor com ID')
     print('[0] - SAIR')
 
 
@@ -27,6 +29,7 @@ def mostraErroNumero():
 
 
 def pedeID():
+    """Faz verificação se o input será do tipo int, caso contrário trata o ValueError e retorna None"""
     try:
         index = int(input('Digite o número do ID: '))
         return index
@@ -82,9 +85,21 @@ def editarStatusAluno(index):
         print('Opção não existe.')
 
 
-def mostraDadosAlunoComOpcoes(index):
+def editarNomeProfessor(index):
+    nome = input('Digite o nome a ser mudado: ')
+    esc.mudarNomeProfessor(index, nome)
+    print(f'Professor (ID: {index}) teve seu nome alterado para {nome}.')
+
+
+def editarEmailProfessor(index):
+    email = pedeEmail()
+    esc.mudarEmailProfessor(index, email)
+    print(f'Professor (ID: {index}) teve seu email alterado para {email}.')
+
+
+def mostraAlunoComOpcoes(index):
     if index != None:
-        if esc.listarAlunoComIndex(index):
+        if esc.listarAlunoIndex(index):
             comando = int(input('Deseja editar o aluno? [1] - Sim | [0] - Não\nDigite o comando >> '))
             if comando == 1:
                 print('Você quer editar:\n[1] - Nome | [2] - Email | [3] - Turma | [4] - Turno | [5] - Status')
@@ -108,6 +123,25 @@ def mostraDadosAlunoComOpcoes(index):
                     print('Opção não existe, voltando ao menu principal')
             else:
                 pass # Não fazer nada
+
+
+def mostraProfessorComOpcoes(index):
+    if index != None:
+        if esc.listarProfessorIndex(index):
+            comando = int(input('Deseja editar o professor? [1] - Sim | [0] - Não\nDigite o comando >> '))
+            if comando == 1:
+                print('Você quer editar:\n[1] - Nome | [2] - Email')
+                comando = int(input('Digite o comando >> '))
+                # Muda nome do professor
+                if comando == 1:
+                    editarNomeProfessor(index)
+                # Muda email do professor
+                elif comando == 2:
+                    editarEmailProfessor(index)
+                else:
+                    print('Opção não existe, voltando ao menu principal')
+            else:
+                pass 
 
 
 """
@@ -146,26 +180,36 @@ if __name__ == '__main__':
         elif comando == 5:
             index = pedeID()
             if index != None:
-                mostraDadosAlunoComOpcoes(index)
+                mostraAlunoComOpcoes(index)
 
         elif comando == 6:
             index = pedeID()
             if index != None:
-                esc.listarProfessorComIndex(index)
+                esc.listarProfessorIndex(index)
 
         elif comando == 7:
             codigo = input('Digite o código da turma: ')
-            esc.listarAlunosPorTurma(codigo)
+            esc.listarAlunosTurma(codigo)
 
         elif comando == 8:
             index = pedeID()
             if index != None:
-                esc.listarAlunosDoProfessor(index)
+                esc.listarAlunosProfessor(index)
 
         elif comando == 9:
             index = pedeID()
             if index != None:
-                esc.listarDadosAlunoComIndex(index)
+                esc.listarDadosAlunoIndex(index)
+
+        elif comando == 10:
+            index = pedeID()
+            if index != None:
+                esc.removeAluno(index)
+
+        elif comando == 11:
+            index = pedeID()
+            if index != None:
+                esc.removeProfessor(index)
 
         elif comando == 0:
             exit()
