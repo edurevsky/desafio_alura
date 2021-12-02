@@ -4,8 +4,7 @@
 ##### O arquivo responsável pela "inicialização do sistema" é o "main.py"
 
 ## Abaixo, uma foto de como é a "interface" do sistema.
-![](https://user-images.githubusercontent.com/91025690/144425111-6aa0f09d-5d29-4ef6-9f68-0344179d5668.png)
-
+![foto_terminal](https://user-images.githubusercontent.com/91025690/144426212-32d9d025-7842-4a1e-a2bb-d452ae87ab27.png)
 
 ### Comandos:
 
