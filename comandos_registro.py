@@ -9,7 +9,7 @@ turnos = '[1] Manha - [2] Tarde - [3] Noite\n'
 
 
 def pedeNome():
-    nome = input(f'Digite o nome:')
+    nome = input(f'Digite o nome: ')
     return nome
 
 

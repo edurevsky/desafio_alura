@@ -14,7 +14,7 @@ def mostraOpcoes():
     print('[3] - Listar Alunos')
     print('[4] - Listar Professores')
     print('[5] - Consultar e Editar Aluno com ID')
-    print('[6] - Consultar e Professor com ID')
+    print('[6] - Consultar e Editar Professor com ID')
     print('[7] - Listar Alunos por Turma')
     print('[8] - Listar Alunos de um Professor')
     print('[9] - Ver Dados de um Aluno com ID')
@@ -185,7 +185,7 @@ if __name__ == '__main__':
         elif comando == 6:
             index = pedeID()
             if index != None:
-                esc.listarProfessorIndex(index)
+                mostraProfessorComOpcoes(index)
 
         elif comando == 7:
             codigo = input('Digite o código da turma: ')
