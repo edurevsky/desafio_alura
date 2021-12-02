@@ -19,13 +19,17 @@
   - Assim como o Listar Alunos, retorna o ID(index) e os professores salvos no sistema.
 + Consultar e Editar Aluno com ID
   - O sistema pede o ID(index) do Aluno, retornando suas informações e perguntando se o usuário quer alterar algum dado presente no Aluno.
-+ Consultar Professor com ID
-  - O sistema pede o ID(index) do Professor e retorna sua informações, não é possível alterar dados.
++ Consultar e Editar Professor com ID
+  - Assim como o Consultar e Editar Aluno, o sistema pergunta se o usuário quer mudar algum dado presente no Professor.
 + Listar Alunos por Turma
   - O sistema irá pedir um código de turma, e irá retornar os Alunos que estão presentes nela.
 + Listar Alunos de um Professor
   - O sistema irá pedir um código de turma, passará pelas turmas que o Professor possui e retornará seus alunos.
 + Ver Dados de um Aluno com ID
-  - O sistema pede o ID(index) de um aluno e retorna informações rápidas e simples do Aluno (Se está ativo e em que turno se encontra).
+  - O sistema pede o ID(index) de um Aluno e retorna informações rápidas e simples do Aluno (Se está ativo e em que turno se encontra).
++ Remover Aluno com ID
+  - O sistema pede o ID(index) de um Aluno e o remove.
++ Remover Professor com ID
+  - O sistema pede o ID(index) de um Professor e o remove.
 + SAIR
   - Encerra o funcionamento do sistema.
